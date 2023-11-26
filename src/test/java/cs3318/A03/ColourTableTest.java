@@ -35,8 +35,18 @@ class ColourTableTest {
 
     @Test
     void addValidColor() {
-        // Write test for adding a valid RGB color to the table
-        // Ensure that the color is added successfully
+        // Arrange
+        ColourTable colourTable = new ColourTable(8); // Create a ColourTable with a valid palette size
+        int validRGBColor = 0xFF00FF; // Choose a valid RGB color (example: purple)
+
+        // Act
+        // Write the code to add the valid RGB color to the table
+        colourTable.add(validRGBColor);
+
+        // Assert
+        // Add assertions to ensure that the color is added successfully
+        assertTrue(colourTable.contains(validRGBColor), "Valid RGB color should be added");
+        // You might add more assertions based on your specific requirements
     }
 
     @Test
