@@ -21,8 +21,16 @@ class ColourTableTest {
 
     @Test
     void constructorInvalidPaletteSize() {
-        // Write test for constructor with an invalid palette size
-        // Expect an exception to be thrown
+        // Arrange
+        int invalidPaletteSize = 1; // Choose an invalid palette size
+
+        // Act & Assert
+        // Use assertThrows to check that the specified type of exception (IllegalArgumentException) is thrown
+        assertThrows(IllegalArgumentException.class, () -> {
+            // This lambda expression contains the code that is expected to throw the exception
+            // Attempt to create a ColourTable with an invalid palette size
+            new ColourTable(invalidPaletteSize);
+        });
     }
 
     @Test
