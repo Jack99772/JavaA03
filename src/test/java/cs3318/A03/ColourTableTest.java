@@ -57,14 +57,39 @@ class ColourTableTest {
 
     @Test
     void addColorAtFullCapacity() {
-        // Write test for adding a color when the table is at full capacity
-        // Expect an exception to be thrown
+        // Arrange
+        ColourTable colourTable = new ColourTable(2); // Set a small palette size for testing
+        int firstColor = 0xFF0000; // First color
+        int secondColor = 0x00FF00; // Second color
+
+        // Act
+        colourTable.add(firstColor);
+        colourTable.add(secondColor);
+
+        // Assert
+        assertThrows(IllegalStateException.class, () -> {
+            // Attempt to add a third color when the table is at full capacity
+            colourTable.add(0x0000FF);
+        }, "Expected IllegalStateException to be thrown, but nothing was thrown.");
     }
 
     @Test
     void addSameColorMoreThanOnce() {
-        // Write test for adding the same color more than once
-        // Define the expected behavior
+        // Arrange
+        ColourTable colourTable = new ColourTable(3); // Set a palette size for testing
+        int redColor = 0xFF0000; // Red color
+
+        // Act
+        colourTable.add(redColor);
+
+        // Assert
+        assertEquals(1, colourTable.getColors().size(), "Expected one color in the table");
+
+        // Act
+        colourTable.add(redColor);
+
+        // Assert
+        assertEquals(1, colourTable.getColors().size(), "Expected still one color in the table");
     }
 
     // Add more tests as needed for other aspects of the ColourTable class

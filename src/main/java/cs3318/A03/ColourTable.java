@@ -15,9 +15,19 @@ public class ColourTable {
 
     // Constructor with a palette size parameter
     public ColourTable(int paletteSize) {
+        // Check if the palette size is a power of two and within the specified range
+        if (!isPowerOfTwo(paletteSize) || paletteSize < 2 || paletteSize >= 1025) {
+            throw new IllegalArgumentException("Invalid palette size");
+        }
+
+        // Initialize the palette size and other necessary logic
         this.paletteSize = paletteSize;
         this.colors = new ArrayList<>();
-        // Additional initialization logic if needed
+    }
+
+    // Helper method to check if a number is a power of two
+    private boolean isPowerOfTwo(int number) {
+        return (number & (number - 1)) == 0 && number > 0;
     }
 
     // Getter method for palette size
@@ -28,11 +38,22 @@ public class ColourTable {
     // Method to add a color to the table
     public void add(int color) {
         // Check if the palette is not full before adding a color
-        if (colors.size() < paletteSize) {
-            colors.add(color);
-        } else {
+        if (colors.size() >= paletteSize) {
             throw new IllegalStateException("Palette is at full capacity");
         }
+
+        // Check if the color is already present in the palette
+        if (colors.contains(color)) {
+            throw new IllegalArgumentException("Color is already present in the palette");
+        }
+
+        // Add the color to the palette
+        colors.add(color);
+    }
+
+    // Getter method for colors (returns a copy of the internal list)
+    public List<Integer> getColors() {
+        return new ArrayList<>(colors);
     }
 
     // Method to check if the table contains a specific color
