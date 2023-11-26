@@ -76,20 +76,17 @@ class ColourTableTest {
     @Test
     void addSameColorMoreThanOnce() {
         // Arrange
-        ColourTable colourTable = new ColourTable(3); // Set a palette size for testing
+        ColourTable colourTable = new ColourTable(4); // Set a valid palette size for testing
         int redColor = 0xFF0000; // Red color
 
-        // Act
-        colourTable.add(redColor);
-
-        // Assert
-        assertEquals(1, colourTable.getColors().size(), "Expected one color in the table");
-
-        // Act
-        colourTable.add(redColor);
-
-        // Assert
-        assertEquals(1, colourTable.getColors().size(), "Expected still one color in the table");
+        // Act & Assert
+        // Use assertThrows to check that the specified type of exception (IllegalArgumentException) is thrown
+        assertThrows(IllegalArgumentException.class, () -> {
+            // This lambda expression contains the code that is expected to throw the exception
+            // Attempt to add the same color more than once
+            colourTable.add(redColor);
+            colourTable.add(redColor);
+        });
     }
 
     // Add more tests as needed for other aspects of the ColourTable class
