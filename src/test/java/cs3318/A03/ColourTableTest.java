@@ -51,8 +51,17 @@ class ColourTableTest {
 
     @Test
     void addInvalidColor() {
-        // Write test for adding an invalid RGB color
-        // Expect an exception to be thrown
+        // Arrange
+        ColourTable colourTable = new ColourTable(4); // Set a valid palette size for testing
+        int invalidColor = 0xFFFFFF0; // An invalid RGB color (outside the valid range)
+
+        // Act & Assert
+        // Use assertThrows to check that the specified type of exception (IllegalArgumentException) is thrown
+        assertThrows(IllegalArgumentException.class, () -> {
+            // This lambda expression contains the code that is expected to throw the exception
+            // Attempt to add an invalid RGB color
+            colourTable.add(invalidColor);
+        });
     }
 
     @Test

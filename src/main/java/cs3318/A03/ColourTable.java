@@ -47,8 +47,18 @@ public class ColourTable {
             throw new IllegalArgumentException("Color is already present in the palette");
         }
 
+        // Check if the color is a 24-bit RGB color (within the valid range)
+        if (!isValidRgbColor(color)) {
+            throw new IllegalArgumentException("Invalid RGB color");
+        }
+
         // Add the color to the palette
         colors.add(color);
+    }
+    // Validate the RGB color
+    private boolean isValidRgbColor(int color) {
+        // Check if the color is a 24-bit RGB color (within the valid range)
+        return (color >= 0 && color <= 0xFFFFFF);
     }
 
     // Getter method for colors (returns a copy of the internal list)
