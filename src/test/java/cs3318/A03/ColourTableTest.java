@@ -1,7 +1,6 @@
 package cs3318.A03;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import cs3318.A03.ColourTable;
 /**
  * The ColourTableTest class contains a set of JUnit tests for the ColourTable class.
  * Each test method corresponds to a specific functionality of the ColourTable class,
